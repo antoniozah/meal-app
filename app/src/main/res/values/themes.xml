@@ -2,8 +2,4 @@
 <resources>
 
     <style name="Theme.MealDataApp" parent="android:Theme.Material.Light.NoActionBar" />
-    <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenIconBackgroundColor">@color/black</item>
-        <item name="postSplashScreenTheme">@style/Theme.MealDataApp</item>
-    </style>
 </resources>
