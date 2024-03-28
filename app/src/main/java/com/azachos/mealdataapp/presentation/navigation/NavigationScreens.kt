@@ -1,6 +1,7 @@
 package com.azachos.mealdataapp.presentation.navigation
 
 import androidx.navigation.NavHostController
+import com.azachos.mealdataapp.util.Constants.Navigation.DETAIL_SCREEN_ROUTE
 import com.azachos.mealdataapp.util.Constants.Navigation.HOME_SCREEN_ROUTE
 import com.azachos.mealdataapp.util.Constants.Navigation.SPLASH_SCREEN_ROUTE
 
@@ -24,7 +25,10 @@ class NavigationScreens(navController: NavHostController) {
 
     val detail: (String) -> Unit = { mealId ->
         navController.navigate("detail/$mealId") {
+            popUpTo(DETAIL_SCREEN_ROUTE) {
 
+            }
+            launchSingleTop = true
         }
     }
 }

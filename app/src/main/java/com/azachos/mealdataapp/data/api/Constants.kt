@@ -5,4 +5,5 @@ object Constants {
     const val RANDOM_RECIPE = "random.php"
     const val MEAL_CATEGORIES = "categories.php"
     const val MEALS_BY_CATEGORY = "filter.php"
+    const val SINGLE_MEAL = "lookup.php"
 }

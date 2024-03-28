@@ -13,10 +13,13 @@ fun NavGraphBuilder.detailScreenComposable(
     composable(
         route = DETAIL_SCREEN_ROUTE,
         arguments = listOf(navArgument("mealId") {
-            type = NavType.IntType
+            type = NavType.StringType
         })
     ) {
-        val mealId = it.arguments?.getString("mealId")
-        DetailScreen()
+        val mealId = it.arguments?.getString("mealId") ?: "-1"
+        DetailScreen(
+            mealId = mealId,
+            navigateToHomeScreen = navigateToHomeScreen
+        )
     }
 }

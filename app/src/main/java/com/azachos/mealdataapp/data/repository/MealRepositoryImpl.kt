@@ -5,6 +5,7 @@ import com.azachos.mealdataapp.data.api.MealAppService
 import com.azachos.mealdataapp.data.mappers.toDomain
 import com.azachos.mealdataapp.domain.models.CategoryMeal
 import com.azachos.mealdataapp.domain.models.MealCategory
+import com.azachos.mealdataapp.domain.models.MealDetails
 import com.azachos.mealdataapp.domain.models.RandomRecipeMeal
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -81,6 +82,27 @@ class MealRepositoryImpl @Inject constructor(
                 }
             } catch (e: Exception) {
                 emit(NetworkResult.Error(message = e.localizedMessage ?: "Something did wrong", data = null))
+            }
+        }
+    }
+
+    override suspend fun singleMeal(mealId: Int): Flow<NetworkResult<List<MealDetails>>> {
+        return flow {
+            emit(NetworkResult.Loading())
+            try {
+                val response = mealAppService.getMealById(mealId)
+                if(response.isSuccessful) {
+                    val mealDetails = response.body()?.let {
+                        it.meals.map { meal ->
+                            meal.toDomain()
+                        }
+                    } ?: emptyList()
+                    emit(NetworkResult.Success(data = mealDetails))
+                } else {
+                    emit(NetworkResult.Error(message = "Error with code ${response.code()}", data = null))
+                }
+            } catch(e: Exception) {
+                emit(NetworkResult.Error(message = e.localizedMessage ?: "Something did wrong"))
             }
         }
     }
