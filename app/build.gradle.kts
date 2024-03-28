@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.android.compiler)
     implementation(libs.io.coil.compose)
+    implementation(libs.androidx.splashscreen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

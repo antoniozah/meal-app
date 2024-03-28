@@ -1,7 +1,9 @@
 package com.azachos.mealdataapp.data.mappers
 
+import com.azachos.mealdataapp.data.dto.CategoryMealDto
 import com.azachos.mealdataapp.data.dto.MealCategoryDto
 import com.azachos.mealdataapp.data.dto.MealDto
+import com.azachos.mealdataapp.domain.models.CategoryMeal
 import com.azachos.mealdataapp.domain.models.MealCategory
 import com.azachos.mealdataapp.domain.models.RandomRecipeMeal
 
@@ -70,4 +72,11 @@ fun MealCategoryDto.toDomain() : MealCategory =
         strCategory = strCategory,
         strCategoryDescription = strCategoryDescription,
         strCategoryThumb = strCategoryThumb
+    )
+
+fun CategoryMealDto.toDomain() : CategoryMeal =
+    CategoryMeal(
+        idMeal = idMeal,
+        strMeal = strMeal,
+        strMealThumb = strMealThumb
     )

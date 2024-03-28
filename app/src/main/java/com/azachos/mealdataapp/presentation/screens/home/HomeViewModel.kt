@@ -1,6 +1,5 @@
 package com.azachos.mealdataapp.presentation.screens.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.azachos.mealdataapp.data.NetworkResult
@@ -114,5 +113,41 @@ class HomeViewModel @Inject constructor(
             )
         }
     }
+
+    fun getMealsByCategory(categoryName: String) {
+        viewModelScope.launch {
+            mealRepository.categoryMeals(categoryName).collect {
+                when(it) {
+                    is NetworkResult.Loading -> {
+                        _uiState.update { state ->
+                            state.copy(
+                                screenState = ScreenState.LOADING,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                    is NetworkResult.Error -> {
+                        _uiState.update { state ->
+                            state.copy(
+                                screenState = ScreenState.ERROR,
+                                errorMessage = it.message
+                            )
+                        }
+                    }
+                    is NetworkResult.Success -> {
+                        _uiState.update { state ->
+                            state.copy(
+                                screenState = ScreenState.SUCCESS,
+                                mealsByCategory = it.data ?: emptyList(),
+                                errorMessage = null,
+                            )
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
 
 }
