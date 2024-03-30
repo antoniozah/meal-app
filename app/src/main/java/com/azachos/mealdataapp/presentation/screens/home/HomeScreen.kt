@@ -36,9 +36,9 @@ import com.azachos.mealdataapp.domain.models.MealCategory
 
 @Composable
 fun HomeScreen(
-    navigateToDetailScreen: (String) -> Unit
+    navigateToDetailScreen: (String) -> Unit,
+    homeViewModel: HomeViewModel = hiltViewModel()
 ) {
-    val homeViewModel: HomeViewModel = hiltViewModel()
     val homeUiState by homeViewModel.uiState.collectAsStateWithLifecycle()
     val appContext: Context = LocalContext.current
 
@@ -90,6 +90,7 @@ fun HomeScreen(
             }
         }
     }
+
 }
 
 @Composable

@@ -26,8 +26,8 @@ import com.azachos.mealdataapp.util.ScreenState
 fun DetailScreen(
     mealId: String,
     navigateToHomeScreen: () -> Unit,
+    detailViewModel: DetailViewModel = hiltViewModel()
 ) {
-    val detailViewModel: DetailViewModel = hiltViewModel()
     val detailUiState by detailViewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
 

@@ -109,7 +109,6 @@ class HomeViewModel @Inject constructor(
         _uiState.update { state ->
             state.copy(
                 selectedCategory = category
-
             )
         }
     }

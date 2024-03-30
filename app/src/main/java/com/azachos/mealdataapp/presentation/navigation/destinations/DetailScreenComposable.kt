@@ -5,7 +5,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.azachos.mealdataapp.presentation.screens.detail.DetailScreen
-import com.azachos.mealdataapp.util.Constants.Navigation.DETAIL_SCREEN_ROUTE
+import com.azachos.mealdataapp.util.Constants.Navigation.MainApp.DETAIL_SCREEN_ROUTE
 
 fun NavGraphBuilder.detailScreenComposable(
     navigateToHomeScreen:() -> Unit
